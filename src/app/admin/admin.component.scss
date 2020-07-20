@@ -1,0 +1,74 @@
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mat-elevation-z8 {
+        width: 60%;
+        border: 1px solid rgb(116, 111, 111);
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        margin: 10px;
+
+    }
+
+    .outLogin {
+        position: fixed;
+        right: 50px;
+        top: 50px;
+    }
+
+    .outLogin:hover {
+        color: white;
+        transition: all 0.5s;
+    }
+
+    .img {
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        margin: 40px;
+    }
+
+    .text {
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 2rem;
+    }
+
+    .text1 {
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 1rem;
+    }
+
+    .text3{
+        margin-top: 50px;
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 6rem;
+    }
+
+    .addProducts {
+        display: flex;
+        justify-content: center;
+        width: 60%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        min-height: 50px;
+
+        button {
+            background-color: white;
+            width: 50%;
+        }
+    }
+
+    mat-header-cell{
+        text-align: center;
+
+        button{
+            color: black;
+        }
+    }
+}
+

@@ -1,0 +1,81 @@
+<mat-icon class="arrowIcon" [routerLink]="['/shop', currentIdUser]">arrow_back</mat-icon>
+<div class="mainBlock">
+    <mat-icon class="iconBasket2" (click)= 'exitLogin()'>exit_to_app</mat-icon>
+    <img class="img" src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250"
+        alt="Лого">
+        <ng-container  *ngIf='!orderMade; else MadeOrder'>
+    <h1 class='text'>Make your choice</h1>
+    <ng-container *ngIf='products.length; else EmptyBasket'>
+        <mat-table [dataSource]="products" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell class="text1" *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="url">
+                <mat-header-cell *matHeaderCellDef> Picture </mat-header-cell>
+                <mat-cell *matCellDef="let element"><img src={{element.url}} alt='Logo' width="90" height="90">
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                <mat-cell class="text1" *matCellDef="let element">{{element.price}}$</mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="quantity">
+                <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+                <mat-cell class="text1" *matCellDef="let element"> {{element.totalCount}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>
+                    <button mat-stroked-button (click)='clearProductClick()'>
+                        Clear
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <div>
+                        <button mat-stroked-button (click)='addProductsClick(element._id)'>
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <button mat-stroked-button (click)='minProductClick(element._id)'>
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
+                    <button mat-stroked-button (click)='delProductClick(element._id)'>
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="['position', 'name', 'url', 'price', 'quantity', 'edit']">
+            </mat-header-row>
+            <mat-row *matRowDef="let row; columns: ['position', 'name', 'url', 'price', 'quantity', 'edit'];"></mat-row>
+
+        </mat-table>
+        <div class="totalSubmit">
+            <button (click) = 'orderMadeClick()' mat-stroked-button>Make order</button>
+            <h1 class="text">total count: {{total}}$</h1>
+        </div>
+    </ng-container>
+    </ng-container>
+    <ng-template #EmptyBasket>
+        <h1 class="text3">Your cart is empty</h1>
+    </ng-template>
+    <ng-template #MadeOrder>
+        <h1 class="text3">Thanks for your order</h1>
+        <mat-spinner ></mat-spinner>
+    </ng-template>
+</div>

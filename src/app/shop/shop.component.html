@@ -1,0 +1,24 @@
+<div class="mainBlock">
+  <mat-icon class="iconBasket2" (click)='exitLogin()'>exit_to_app</mat-icon>
+  <mat-icon class="iconBasket" matBadge={{counterBasket}} matBadgeColor="warn" [routerLink]="['/basket', current_idUser]">shopping_basket</mat-icon>
+  <img src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250" alt="Лого">
+  <h1 class="text">Welcome to our store</h1>
+  <div class="">
+    <mat-grid-list cols="2" rowHeight="480px">
+      <mat-grid-tile *ngFor='let product of products'>
+        <div class="inGrid">
+          <img src={{product.url}} (click)='switchesModalTrue(product)' alt={{product.name}} width="330" height="330">
+          <p class="text">{{product.name}}</p>
+          <p class="text">Price:{{product.price}}$</p>
+          <button mat-stroked-button (click)='handleProductIdChange(product._id, product.name)'>Add in cart</button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+<app-modal 
+*ngIf='modal' class='modalStyle'  
+[currentProduct]="currentProduct"
+ (productIdChange)="handleProductIdChangeModal($event)"
+ (switchesModalFalse)='switchesModalFalse()'
+ ></app-modal>

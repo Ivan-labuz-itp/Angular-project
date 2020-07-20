@@ -1,0 +1,88 @@
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mat-elevation-z8 {
+        width: 60%;
+        border: 1px solid rgb(116, 111, 111);
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        margin: 10px;
+
+        button{
+        margin: 4px;
+        }
+    }
+
+    .iconBasket2 {
+        position: fixed;
+        right: 50px;
+        top: 50px;
+    }
+
+    .iconBasket2:hover {
+        color: white;
+        transition: all 0.5s;
+    }
+
+    .img {
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        margin: 40px;
+    }
+
+    .text {
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 2rem;
+    }
+
+    .text1 {
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 1rem;
+    }
+
+    .text3{
+        margin-top: 50px;
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 6rem;
+    }
+
+    .totalSubmit {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        button {
+            background-color: white;
+        }
+    }
+
+    mat-header-cell{
+        text-align: center;
+
+        button{
+            color: black;
+        }
+    }
+}
+
+.arrowIcon {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+}
+
+.arrowIcon:hover {
+    color: white;
+    transition: all 0.5s;
+}
+mat-spinner{
+    margin-top: 50px;
+}

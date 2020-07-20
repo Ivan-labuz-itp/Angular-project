@@ -1,0 +1,12 @@
+<div>
+    <mat-icon (click)='exitModal()'>close</mat-icon>
+    <h1 class="text">{{currentProduct.name}}</h1>
+    <img src={{currentProduct.url}} alt={{currentProduct.name}} width="330" height="330">
+    <p class="text">{{currentProduct.text}}</p>
+    <p class="text">Price:{{currentProduct.price}} $</p>
+    <div class='buttonModal'>
+        <button mat-stroked-button (click)='subtractBouquet()'>-1</button>
+        <button mat-stroked-button (click)='addInBasket(currentProduct._id,currentProduct.name)'>Add in cart {{quantity}}</button>
+        <button mat-stroked-button (click)='addBouquet()'>+1</button>
+    </div>
+</div>

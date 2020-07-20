@@ -1,0 +1,49 @@
+<div class="mainBlock">
+    <mat-icon class="outLogin" (click)='exitLogin()'>exit_to_app</mat-icon>
+    <img class="img" src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250"
+        alt="Лого">
+        <h1 class='text'>Admin panel</h1>
+        <ng-container *ngIf='products.length; else EmptyBasket'>
+            <mat-table [dataSource]="products" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell class="text1" *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="url">
+                    <mat-header-cell *matHeaderCellDef> Picture </mat-header-cell>
+                    <mat-cell *matCellDef="let element"><img src={{element.url}} alt='Logo' width="90" height="90">
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                    <mat-cell class="text1" *matCellDef="let element">{{element.price}}$</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="text">
+                    <mat-header-cell *matHeaderCellDef> Text </mat-header-cell>
+                    <mat-cell class="text1" *matCellDef="let element"> {{element.text}} </mat-cell>
+                </ng-container>
+
+                
+                <mat-header-row *matHeaderRowDef="['position', 'name', 'url', 'price', 'text']">
+                </mat-header-row>
+                <mat-row *matRowDef="let row; columns: ['position', 'name', 'url', 'price', 'text'];">
+                </mat-row>
+
+            </mat-table>
+            <div class="addProducts">
+                <button mat-button (click)="openDialog()" >Add product</button>
+            </div>
+        </ng-container>
+    <ng-template #EmptyBasket>
+        <h1 class="text3">List products is empty</h1>
+    </ng-template>
+</div>

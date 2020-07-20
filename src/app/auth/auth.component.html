@@ -1,0 +1,95 @@
+<div class="commonScreen">
+  <div class="mainBlock">
+    <!-- Log in -->
+    <ng-container *ngIf='!registration && !passwordRecovery'>
+      <form class="example-form" [formGroup]="interfaceLogin" novalidate (ngSubmit)="submitLogin()">
+        <img src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250" alt="Лого">
+        <h2>Log in</h2>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput class="form-control" name="email" formControlName="userLogEmail" />
+          <mat-error
+            *ngIf="interfaceLogin.controls['userLogEmail'].invalid && interfaceLogin.controls['userLogEmail'].touched">
+            Enter your email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput class="form-control" name="password" formControlName="userLogPassword" />
+          <mat-error
+            *ngIf="interfaceLogin.controls['userLogPassword'].invalid && interfaceLogin.controls['userLogPassword'].touched">
+            Enter password
+          </mat-error>
+        </mat-form-field>
+        <ng-container *ngIf= '!currentUser'><h2 class="danger">Incorrect username or password</h2></ng-container>
+        <button class="enterButton"  mat-stroked-button>Enter</button>
+        <div class="registrationForgot">
+          <button (click)='registrationSwitch()' mat-stroked-button>Registration</button>
+          <button (click)='recoverySwitch()' mat-stroked-button>Forgot password?</button>
+        </div>
+      </form>
+    </ng-container>
+    <!-- Registration -->
+    <ng-container *ngIf='registration'>
+      <form class="example-form" [formGroup]="interfaceRegistration" novalidate (ngSubmit)="submitRegistration()">
+        <img src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250" alt="Лого">
+        <h2>Registration</h2>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput class="form-control" name="email" formControlName="userRegEmail" />
+          <mat-error
+            *ngIf="interfaceRegistration.controls['userRegEmail'].invalid && interfaceRegistration.controls['userRegEmail'].touched">
+            Enter your email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput class="form-control" name="password" formControlName="userRegPassword" />
+          <mat-error
+            *ngIf="interfaceRegistration.controls['userRegPassword'].invalid && interfaceRegistration.controls['userRegPassword'].touched">
+            Enter password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Repeat password</mat-label>
+          <input matInput class="form-control" name="repeatPassword" formControlName="repeatRegPassword" />
+          <mat-error
+            *ngIf="
+            interfaceRegistration.controls['repeatRegPassword'].hasError('required')">
+            Enter password
+          </mat-error>
+          <mat-error
+            *ngIf="
+            interfaceRegistration.controls['repeatRegPassword'].hasError('passwordNotMatch')">
+            Doesn't match
+          </mat-error>
+        </mat-form-field>
+        <div class="registrationForgot">
+          <button mat-stroked-button >Sign up</button>
+          <button (click)='registrationSwitch()' mat-stroked-button>Back</button>
+        </div>
+      </form>
+    </ng-container>
+    <!-- Recovery -->
+    <ng-container *ngIf='passwordRecovery'>
+      <form class="example-form" [formGroup]="interfaceRecovery" novalidate (ngSubmit)="submitRecovery()">
+        <img src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250" alt="Лого">
+        <h2>Recovery password</h2>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput class="form-control" name="email" formControlName="userRecovEmail" />
+          <mat-error
+            *ngIf="interfaceRecovery.controls['userRecovEmail'].invalid && interfaceRecovery.controls['userRecovEmail'].touched">
+            Enter your email
+          </mat-error>
+        </mat-form-field>
+        <ng-container *ngIf= 'recoveryPass === "Password sent to your mail" || recoveryPass === "Go to the main page"'><h2>{{recoveryPass}}</h2></ng-container>
+        <ng-container *ngIf= 'recoveryPass === "User not found"'><h2 class="danger">{{recoveryPass}}</h2></ng-container>
+        <div class="registrationForgot">
+          <button mat-stroked-button [disabled]="!interfaceRecovery.valid">Send email</button>
+          <button (click)='recoverySwitch()' mat-stroked-button>Back</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</div>

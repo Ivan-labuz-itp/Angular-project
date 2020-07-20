@@ -1,0 +1,23 @@
+mat-icon {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+
+mat-icon:hover {
+    color: white;
+    transition: all 0.5s;
+}
+
+.text {
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 2rem;
+    padding-top: 10px;
+}
+
+.buttonModal {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}

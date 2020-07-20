@@ -1,0 +1,35 @@
+<form class="example-form" [formGroup]="addProductForm" (ngSubmit)="submitProduct()" novalidate>
+    <img src="https://i.pinimg.com/600x315/dd/39/6a/dd396aa73c2d5f140d899dccdecebbbd.jpg" width="250" alt="Лого">
+    <h2>Add data new product</h2>
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput class="form-control" name="nameProduct" formControlName="nameProduct" />
+        <mat-error *ngIf="addProductForm.controls['nameProduct'].invalid">
+            Enter your name
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Picture</mat-label>
+        <input matInput class="form-control" name="pictureProduct" formControlName="pictureProduct" />
+        <mat-error
+        *ngIf="addProductForm.controls['pictureProduct'].invalid">
+            Enter url
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" class="form-control" name="priceProduct" formControlName="priceProduct" />
+        <mat-error
+        *ngIf="addProductForm.controls['priceProduct'].invalid">
+            Enter price
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <input matInput class="form-control" name="textProduct" formControlName="textProduct" />
+        <mat-error>
+            Enter description
+        </mat-error>
+    </mat-form-field>
+    <button class="enterButton" mat-stroked-button>Add</button>
+</form>

@@ -1,0 +1,12 @@
+.mainBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 800px;
+    .text3 {
+        margin-top: 50px;
+        font-family: "Times New Roman", Times, serif;
+        font-style: italic;
+        font-size: 6rem;
+    }
+}
